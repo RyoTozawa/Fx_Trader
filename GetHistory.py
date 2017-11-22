@@ -21,7 +21,7 @@ def set_end(instrument):
 
 
 try:
-    response = oanda.get_history(instrument="USD_JPY", granularity=granularity, count=5000)
+    response = oanda.get_history(instrument="USD_JPY", granularity=granularity, count=10)
     USD_JPY_D = response.get("candles")  # get candles
     for R in USD_JPY_D:
         time = R['time'].rstrip('.000000Z').rstrip(':')
@@ -59,7 +59,7 @@ for i in range(10):
     buffer = []
     try:
         end_time = set_end(USD_JPY_D)
-        response2 = oanda.get_history(instrument="USD_JPY", granularity=granularity, end=end_time, count=5000)
+        response2 = oanda.get_history(instrument="USD_JPY", granularity=granularity, end=end_time, count=10)
         USD_JPY_D = response2.get("candles")  # responseのcandles部分を回収
         for R in USD_JPY_D:
             time = R['time'].rstrip('.000000Z').rstrip(':')
