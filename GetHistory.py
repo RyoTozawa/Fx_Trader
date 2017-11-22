@@ -94,9 +94,12 @@ for i in range(10):
         history.append(b)
 
 header = ['年','月','日','時刻', '開始買値', '開始売値', '最高買値', '最高売値', '最低買値', '最低売値', '終了買値', '終了売値', '出来高']
-with open(str(response['instrument']) + '.csv', 'w') as f:
-    writer = csv.writer(f)  # writerオブジェクトを作成
-    writer.writerow(header)  # ヘッダーを書き込む
-    writer.writerows(history)  # 内容を書き込む
-    print("complete")
-    print("get" + str(len(history)) + "line")
+try:
+    with open(str(response['instrument']) + '.csv', 'w') as f:
+        writer = csv.writer(f)  # writerオブジェクトを作成
+        writer.writerow(header)  # ヘッダーを書き込む
+        writer.writerows(history)  # 内容を書き込む
+        print("complete")
+        print("get" + str(len(history)) + "line")
+except:
+    pass
